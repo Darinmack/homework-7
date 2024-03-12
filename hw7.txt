@@ -1,0 +1,22 @@
+2.
+
+Some Similarities are:
+Some Similarities are both use semicolons to end statements and curly braces to define blocks of code.
+ Both PHP and JavaScript allow for dynamic and interactive web pages. PHP can generate dynamic content on the server-side, while JavaScript is able to manipulate the content and behavior of web pages on the client-side.
+ Both languages support variables and various data types such as strings, numbers, arrays, and objects.
+
+While some Differences are: 
+Server vs. Client-Side: PHP is executed on the server-side, meaning it runs on the web server before the page is sent to the client's browser. JavaScript, on the other hand, is executed on the client-side, meaning it runs in the user's browser after the page has been delivered.
+PHP is primarily used for server-side/back-end scripting, such as generating dynamic web pages and interacting with databases. JavaScript is mainly used for client-side/front-end scripting, such as validating forms, creating interactive interfaces, and manipulating the DOM.
+ PHP typically runs in a server environment, such as Apache, while JavaScript runs in a browser environment
+
+
+
+
+#3.
+
+MVC stands for Model-View-Controller, which is a design pattern commonly used in web development to separate the concerns of an application into three interconnected parts: Model, View, Controller
+
+Model: Manages the data and business logic of the application(interacts with the database)
+View: Presents the data to the user in a specific format. (defines display)
+Controller: Handles user input, interacts with the model, and determines which view to display.( so it basically decides and controls how data gets shown)
