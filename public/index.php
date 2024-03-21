@@ -11,29 +11,42 @@ use app\controllers\UserController;
 use app\controllers\PostController;
 
 
-$url = $_SERVER["REQUEST_URI"];
+// $url = $_SERVER["REQUEST_URI"];
+
+$uri = strtok($_SERVER["REQUEST_URI"], '?');
+
+
+
+
+
 
 $mainController = new MainController();
 $postController = new PostController();
-   
-    switch ($url) {
 
+// if($uri=== '/posts')
+  
+    switch ($uri) {
         case '/':
-          
             $mainController->homepage();
             break;
 
+    
         case '/posts':
-       
             $postController->posts();
             break;
-
-       
+    
         default:
             $mainController->notFound();
             break;
+            
     }
-
+    
+    if ($uri === '/posts' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+        $postController = new PostController();
+        $postController->savePost();
+    }
+    
+   
 
 //todo add a switch statement router to route based on the url
 //if it is "/posts" return an array of posts via the post controller
