@@ -8,21 +8,25 @@ class Post
         return [
             [
                 'id' => 1,
-                'title' => 'First Post',
-                'content' => 'Content for the first post'
+                'name' => 'First Post',
+                'des' => 'Content for the first post'
             ],
             
             [
                 'id' => 2,
-                'title' => 'Second Post',
-                'content' => 'Content for the second post'
+                'name' => 'Second Post',
+                'des' => 'Content for the second post'
             ],
 
             [   'id'=> 3,
-                'title' => 'Third Post',
-                'content'=> 'Content for the third post'
+                'name' => 'Third Post',
+                'des'=> 'Content for the third post'
             ], 
             // Will add more posts as go along
         ];
+    }
+
+    public function savePost() {
+
     }
 }
