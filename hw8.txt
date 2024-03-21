@@ -1,0 +1,35 @@
+1. What does it mean to escape data? How does escaping data help us avoid malicious
+code?
+Escaping data refers to sanitizing or encoding user input or any data that is being sent to a system or displayed on a webpage 
+in such a way that it cannot be interpreted as executable code. This helps  to prevent security vulnerabilities such as Cross-Site Scripting (XSS) attacks, so the script will no longer be harmful.
+2. 
+a. What is REST? What is meant by Statelessness?
+ REST stands for Representational State Transfer, and is an architectural style for providing standards between computer systems on the web,
+  making it easier for systems to communicate with each other.
+  Systems that follow the REST paradigm are stateless, meaning that the server does not need to know anything about what state the client is in and vice versa. 
+  In this way, both the server and the client can understand any message received, even without seeing previous messages.
+
+b. What is a resource?
+Resources are the nouns of the Web - 
+they describe any object, document, or thing that you may need to store or send to other services.
+
+c. Look at the section on Path design: In a RESTful architecture paradigm what
+would be the proper way to create a path for: (provide URL and HTTP method):
+i. getting a list of users?
+HTTP method : GET 
+GET http://fashionboutique.com/customers
+
+ii. getting a particular user?
+HHTP:GET 
+GET http://fashionboutique.com/customers/123
+iii. saving a user?
+HTTP method: POST
+POST http://fashionboutique.com/customers
+
+3. What is a Cookie?
+A website can tell a browser to store data about the user in a text file 
+each time browsers requests another page from that site, browser sends data in the cookie back to server
+
+4. What is a Session?
+A way of maintaining state information about a user's interactions with a website or web application(like the time spent
+interacting with website or web application from when they log in until they log out or session expires )
