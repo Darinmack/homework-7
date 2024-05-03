@@ -3,20 +3,21 @@ require_once '../app/vendor/autoload.php';
 require_once "../app/core/Controller.php";
 require_once "../app/models/User.php";
 require_once "../app/models/Post.php";
+//require_once "../app/core/Database.php";
 require_once "../app/controllers/MainController.php";
 require_once "../app/controllers/UserController.php";
 require_once "../app/controllers/PostController.php";
 use app\controllers\MainController;
 use app\controllers\UserController;
 use app\controllers\PostController;
+use app\models\Post;
 
 
+
+// $env = parse_ini_file('../homework7.env');
 // $url = $_SERVER["REQUEST_URI"];
 
 $uri = strtok($_SERVER["REQUEST_URI"], '?');
-
-
-
 
 
 
@@ -30,21 +31,32 @@ $postController = new PostController();
             $mainController->homepage();
             break;
 
-    
-        case '/posts':
-            $postController->posts();
-            break;
-    
+            case '/posts':
+                
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                   
+                    $postController->savePost();
+                } else {
+                   $postController->viewPost(); 
+                 
+                }
+                break;
+
+             case '/view':
+               $postController->seePosts();   
         default:
             $mainController->notFound();
             break;
             
     }
     
+/*
     if ($uri === '/posts' && $_SERVER['REQUEST_METHOD'] === 'POST') {
-        $postController = new PostController();
+      //  $postController = new PostController();
+      
         $postController->savePost();
     }
+    */
     
    
 

@@ -11,7 +11,7 @@
 
 <div id="posts-container"></div>
 
-
+<!--
     <div>
     <h2>Posts</h2>
    
@@ -27,9 +27,10 @@
             <br>
             <br>
     </div>
-    <div>
+-->
 
-        <h2>Send posts to  save through here</h2>
+
+        <h2>Add New Posts HERE</h2>
         <form id="postForm">
         <br>
         <label >Post Name/Title: </label>
@@ -37,25 +38,61 @@
         <br>
         <br>
         <label > Post Description/Content:  </label>
-        <input type="text"  id="des" name="des" title="Enter Post Description/Content">
+        <input type="text"  id="description" name="description" title="Enter Post Description/Content">
         <br>
         <br>
-        <label for="go">Posts Button </label>
+         <label for="somePost">Posts Button </label>
         <button type="submit" id="somePost" >Click Me </button>
-
+<br>
         </form>
-         <div id="data-container"></div>
-         <br>
-         <br>
+
         <p id="responseMessage"></p>
+
+        <div id="data-container"></div>
+    
     </div>
 
+    <script>
+        
+$(document).ready(function() {
+    $('#postForm').submit(function(e) {
+        e.preventDefault();
+
+        var name = $('#name').val();
+        var description = $('#description').val();
+
+        $.ajax({
+            url: 'http://localhost/posts',
+            type: "POST",
+            data: {
+                name: name,
+                description: description
+            },
+            dataType: "json",
+            success: function(data) {
+                $('#responseMessage').text(data.message).css('font-size', '40px');
+
+                $('#data-container').append('<div class="post"><h3>' + name + '</h3><p>' + description + '</p></div>');
+            },
+            error: function(xhr, status, error) {
+                var errorMessage = xhr.responseJSON ? xhr.responseJSON.message : 'An error has occurred.';
+                $('#responseMessage').text(errorMessage).css('color', 'red').css('font-size','40px');
+            }
+        });
+    });
+});
+
+    </script>
+
+
+<!--
 <script>
+
         $(document).ready(function() {
 
 
             /*
-            $("#somePost").click(function () {
+            $("#getme").submit(function () {
                     $.ajax({
                         url: 'localhost/posts',
                         type: "GET",
@@ -73,32 +110,43 @@
             })
             */
 
+     
 
-            $('#somePost').submit(function(e) {
+
+
+            $('#postForm').submit(function(e) {
                 e.preventDefault(); // Prevent the default form submission
               var name = $('#name').val();
-              var des = $('#des').val();
+              var description = $('#description').val();
+              console.log('Name:', name, 'Description:', description);
+
+              if (name.trim() === '' || description.trim() === '') {
+        $('#data-container').html('<p>Please fill in all fields.</p>');
+        return; 
+    }
+
 
               const data ={
                     name: name,
-                    des : des,
+                    description : description,
               }
               
                 $.ajax({
-                    url: 'localhost/posts',
+                    url: 'http://localhost/posts',
                     type: "POST",
                     data: data,
                     dataType: "json",
-                    sucess: function(data){
-                        console.log(data);
+                    success: function(data){
+                       // console.log(data);
+                        console.log('Success:', data);
                         $('#name').val('')
-                        $('#des').val('')
+                        $('#description').val('')
                         $('#data-container').html(
                         `<div>
                            
                      success: 
                                     <p>${data.name}</p>
-                                    <p>${data.des}</p>
+                                    <p>${data.description}</p>
                                 
                                  </div>`
                             )
@@ -114,10 +162,11 @@
                     });
 
                     });
+                    
                 })
                 
     </script>
 
-
+            -->
 </body>
 </html>
